@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terminal Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="terminal">
+    <div class="terminal-header">
+      <span class="circle red"></span>
+      <span class="circle yellow"></span>
+      <span class="circle green"></span>
+      <span class="terminal-title">~/portfolio</span>
+    </div>
+    <div class="terminal-body">
+      <div class="terminal-content" id="terminal-output">
+        <p class="typed">λ Welcome to my terminal portfolio!</p>
+        <p class="typed">Type a command like <code>projects</code>, <code>skills</code>, or <code>linkedin</code>.</p>
+      </div>
+
+      <div class="typed">
+        λ <input type="text" id="terminal-input" placeholder="type a command..." autofocus />
+      </div>
+
+      <div class="terminal-buttons">
+        <button class="command-btn" onclick="executeCommand('skills')">skills</button>
+        <button class="command-btn" onclick="executeCommand('projects')">projects</button>
+        <button class="command-btn" onclick="executeCommand('resume')">resume</button>
+        <button class="command-btn" onclick="executeCommand('about')">whoami</button>
+        <button class="command-btn" onclick="executeCommand('help')">help</button>
+        <button class="command-btn" onclick="executeCommand('linkedin')">LinedIn</button>
+        <button class="command-btn" onclick="executeCommand('GitHub')">GitHub</button>
+        <button class="command-btn" onclick="executeCommand('clear')">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  const input = document.getElementById("terminal-input");
+  const output = document.getElementById("terminal-output");
+
+  function executeCommand(command) {
+    let lowerCommand = command.trim().toLowerCase();
+    const line = document.createElement("p");
+    line.className = "typed";
+    line.innerHTML = `λ ${lowerCommand}`;
+    output.appendChild(line);
+
+    const response = document.createElement("div");
+    response.className = "typed";
+
+    switch (lowerCommand) {
+      case "projects":
+        response.innerHTML = "<ul><li>Construction Website-BuildIt Construction</li><li>Budget Manager-Progressing</li><li>Portfolio Website</li></ul>";
+        break;
+
+      case "skills":
+        response.innerHTML = "<ul><li>HTML, CSS, JavaScript</li><li>GitHub, Git</li><li>Python, C</li></ul>";
+        break;
+
+      case "resume":
+        // Trigger file download
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'Lakshay Jain resume.pdf';
+        downloadLink.download = 'Lakshay Jain resume.pdf';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        response.innerHTML = "Downloading resume...";
+        break;
+
+      case "about":
+      case "whoami":
+        response.innerHTML = "I'm a passionate web developer focused on crafting interactive, beautiful experiences.";
+        break;
+
+      case "linkedin":
+        window.location.href = "https://www.linkedin.com/in/lakshay-jain-8a8a23323/";
+        return;
+
+
+      case "github":
+        window.location.href = "https://github.com/lakshay310";
+        return;
+
+      case "help":
+      case "command":
+      case "commands":
+        response.innerHTML = `
+          <p>Available commands:</p>
+          <ul>
+            <li>projects</li>
+            <li>skills</li>
+            <li>resume</li>
+            <li>about / whoami</li>
+            <li>linkedin</li>
+            <li>github</li>
+            <li>clear</li>
+            <li>commands / help</li>
+          </ul>`;
+        break;
+
+      case "clear":
+        output.innerHTML = "";
+        return;
+
+      default:
+        response.innerHTML = "Command not recognized. Type <code>help</code> for available options.";
+        break;
+    }
+
+    output.appendChild(response);
+    output.scrollTop = output.scrollHeight;
+  }
+
+  input.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      executeCommand(input.value);
+      input.value = "";
+    }
+  });
+</script>
+
+</body>
+</html>
