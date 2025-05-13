@@ -1,0 +1,53 @@
+name: Terminal Portfolio
+description: A terminal-style interactive personal portfolio that responds to typed commands.
+author: Lakshay Jain
+version: 1.0.0
+
+commands:
+  - name: projects
+    description: Show a list of your projects
+    output:
+      - Construction Website - BuildIt Construction
+      - Budget Manager - Progressing
+      - Portfolio Website
+
+  - name: skills
+    description: Show your technical skills
+    output:
+      - HTML, CSS, JavaScript
+      - GitHub, Git
+      - Python, C
+
+  - name: resume
+    description: Download your resume
+    file: Lakshay Jain resume.pdf
+
+  - name: about
+    aliases: [whoami]
+    description: Show a brief about me
+    output: I'm a passionate web developer focused on crafting interactive, beautiful experiences.
+
+  - name: linkedin
+    description: Redirect to LinkedIn profile
+    url: https://www.linkedin.com/in/lakshay-jain-8a8a23323/
+    redirect: true
+
+  - name: github
+    description: Redirect to GitHub profile
+    url: https://github.com/lakshay310
+    redirect: true
+
+  - name: help
+    aliases: [commands, command]
+    description: Show available commands
+
+  - name: clear
+    description: Clear the terminal output
+
+assets:
+  - Lakshay Jain resume.pdf
+
+styles:
+  - style.css
+
+entrypoint: index.html
