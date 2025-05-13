@@ -1,5 +1,4 @@
-/* style.css */
-
+/* Base Styles */
 body {
   margin: 0;
   font-family: 'Courier New', Courier, monospace;
@@ -9,12 +8,14 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .terminal {
   background-color: #1e1e1e;
   border-radius: 10px;
-  width: 90%;
+  width: 100%;
   max-width: 800px;
   box-shadow: 0 0 15px rgba(0, 255, 160, 0.3);
   overflow: hidden;
@@ -26,6 +27,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: nowrap;
 }
 
 .circle {
@@ -37,13 +39,16 @@ body {
 
 .red { background-color: #ff5f56; }
 .yellow { background-color: #ffbd2e; }
-green { background-color: #27c93f; }
+.green { background-color: #27c93f; } /* You had a typo here: "green" was a class selector with no dot */
 
 .terminal-title {
   margin-left: auto;
   margin-right: auto;
   color: #ccc;
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .terminal-body {
@@ -52,6 +57,7 @@ green { background-color: #27c93f; }
 
 .terminal-content {
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .typed {
@@ -74,8 +80,9 @@ green { background-color: #27c93f; }
   color: #00ff9f;
   font-family: inherit;
   font-size: 1.1rem;
-  width: 80%;
+  width: 100%;
   outline: none;
+  padding: 5px 0;
 }
 
 .terminal-buttons {
@@ -94,9 +101,38 @@ green { background-color: #27c93f; }
   text-decoration: none;
   font-weight: bold;
   transition: background 0.3s ease;
+  font-size: 1rem;
 }
 
 .command-btn:hover {
   background-color: #00d48c;
   color: white;
+}
+
+/* ============================= */
+/*         Mobile Styles         */
+/* ============================= */
+
+@media (max-width: 600px) {
+  .terminal-body {
+    padding: 15px;
+  }
+
+  .typed {
+    font-size: 1rem;
+  }
+
+  .terminal-title {
+    font-size: 12px;
+  }
+
+  .command-btn {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .terminal-buttons {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
 }
