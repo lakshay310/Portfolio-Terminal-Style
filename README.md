@@ -61,4 +61,4 @@ Open in Browser
 Just open index.html in your browser or use Live Server in VS Code.
 
 🔗 Live Demo
-https://your-username.github.io/terminal-portfolio
+https://lakshay310.github.io/Portfolio-Lakshay/
