@@ -44,7 +44,7 @@ A unique, command-line inspired personal portfolio that mimics the aesthetics an
 
 ## 📸 Preview
 
-![Terminal Portfolio Screenshot](assets/preview.png)
+![Terminal Portfolio Screenshot.png](assets/preview.png)
 
 ---
 
